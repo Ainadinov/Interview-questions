@@ -1,0 +1,182 @@
+.develop{
+	padding: 5px;
+}
+
+.dev__click{
+	padding: 15px 25px;
+	background-color: yellow;
+
+	border: 1px solid yellow;
+	color: rgb(241, 0, 0);
+	font-size: 16px;
+}
+
+.dev__click:hover{
+	color: rgb(17, 17, 17);
+	background-color: #6be822;
+
+	border: 1px solid #6be822;
+}
+
+.event{
+	padding: 5px;
+}
+
+.event__click{
+	padding: 15px 25px;
+	background-color: black;
+
+	border: 1px solid black;
+	color: #f6f2f2;
+	font-size: 16px;
+}
+
+.event__click:hover{
+	color: rgb(17, 17, 17);
+	background-color: #fff;
+
+	border: 1px solid #fff;
+}
+
+
+.block{
+	margin-top: 20px;
+	background-color: #f0a1a1;
+	color: #fff;
+	padding: 30px;
+	width: 400px;
+}
+
+.block__second{
+	background-color: #be6cbc;
+	color: #fff;
+	padding: 30px;
+
+}
+
+.block__third{
+	background-color: #a8db6f;
+	color: #fff;
+	padding: 30px;
+}
+
+.dev{
+	padding: 5px;
+}
+
+.dev__del{
+	padding: 15px 25px;
+	background-color: #ff1500;
+
+	border: 1px solid #ff1500;
+	color: rgb(250, 250, 250);
+	font-size: 16px;
+}
+
+.dev__del:hover{
+	color: #111111;
+	background-color: #05eaee;
+
+	border: 1px solid #05eaee;
+}
+
+.delev{
+	padding: 5px;
+}
+
+.dev__delev{
+	padding: 15px 25px;
+	background-color: #ff1500;
+
+	border: 1px solid #ff1500;
+	color: rgb(250, 250, 250);
+	font-size: 16px;
+}
+
+.dev__delev:hover{
+	color: #111111;
+	background-color: #05eaee;
+
+	border: 1px solid #05eaee;
+}
+
+.menu{
+	display: inline-block;
+}
+.menu._active .menu__link{
+	display: block;
+}
+.menu._active .menu__buttom span:first-child{
+	display: none;
+}
+.menu._active .menu__buttom span:last-child{
+	display: block;
+}
+.menu__buttom span:first-child{
+	display: block;
+}
+.menu__buttom span:last-child{
+	display: none;
+}
+
+.mouse{
+	padding: 5px;
+	
+}
+
+.mouse__click{
+	padding: 15px 25px;
+	background-color: yellow;
+
+	border: 1px solid yellow;
+	color: rgb(241, 0, 0);
+	font-size: 16px;
+	vertical-align: middle;
+}
+
+.mouse__click:hover{
+	color: rgb(17, 17, 17);
+	background-color: #6be822;
+
+	border: 1px solid #6be822;
+}
+
+.mouse__move{
+	display: inline-block;
+	padding-left: 5px;
+
+	background-color: #6be822;
+	border: 1px solid #6be822;
+	width: 100px;
+	height: 100px;
+}
+
+.mouse__ovout{
+	display: inline-block;
+	padding-left: 5px;
+
+	background-color: #6be822;
+	border: 1px solid #6be822;
+	width: 100px;
+	height: 100px;
+}
+
+.mouse__rel{
+	display: inline-block;
+	padding-left: 5px;
+
+	background-color: #6be822;
+	border: 1px solid #6be822;
+	width: 100px;
+	height: 100px;
+}
+
+.mouse__enleav{
+	display: inline-block;
+	padding-left: 5px;
+
+	background-color: #6be822;
+	border: 1px solid #6be822;
+	width: 100px;
+	height: 100px;
+}
