@@ -189,3 +189,143 @@ function SideBar(){
 // <Link> отображает доступный элемент <a> с реальным href, указывающим на ресурс, на который он ссылается. Клик по ссылке устанавливает URL-адрес и отслеживает историю просмотров.
 
 ```
+
+# 16. Что такое useReducer?
+
+`useReducer` - используется когда у вас сложная логика состояние, которая включает себя несколько значений которое изменить один State. Много действий котрое работает одним частью состояние, но по разному его меняет
+
+
+```javascript
+
+function reducer (state, action){
+    switch (action.type){
+        case 'increment':
+            return {autoplay: state.count + 1};
+        case 'decrement':
+            return {autoplay: state.count - 1};
+        case 'zero':
+            return {autoplay: 0};
+        default:
+            throw new Error();
+    }
+
+    // fucntion reducer - пренимает два аргумента
+                    //  -- state - начальное значение которое определено в useReducer
+                    //  -- action - dispath для передачи type для проверки типов
+}
+
+const Slider = () => {
+    const [state, dispath] = useReducer(reducer, {count: 0})
+    // useReducer - пренимает три аргумента
+            // -- function reducer
+            // -- начальное состояние, котрое передает в виде объекта
+            // -- для линивого создание начального состояние
+
+    return (
+        <div>
+            <div>{state.count}</div>
+
+            <button onclick={()=> dispath({type: 'increment'})}>toggle autoplay</button>
+            <button onclick={()=> dispath({type: 'decrement'})}>toggle autoplay</button>
+            <button onclick={()=> dispath({type: 'zero'})}>toggle autoplay</button>
+
+        </div>
+    )
+}
+
+
+```
+
+# 16. Что такое HOC?
+
+`HOC` - это один ищ продвинутых способов для повторного использивание логики
+    ** функция которое пренимает компонент и возвращает новый компонент
+    ** рендерит разную верстку и получает разные данные но логика и строение состояние одинаковые 
+    ** использивается для оптимизации и рефакторинга кода
+
+
+```javascript
+
+import {useState, useEffect} from 'react';
+
+const WithSlider = (BaseComponent, getData)=>{
+    return(props)=>{
+        const [slide, setSlide] = useState(0);
+        const [autoplay, setAutoplay] = useState(false)
+
+        useEffect(() => {
+            setSlide(getData());
+        }, [])
+
+        function changeSlide(i) {
+            setSlide(slide => slide + i);
+        }
+        return <BaseComponent
+                {...props}
+                slider={slide}
+                autoplay={autoplay}
+                ChangesSlide={ChangesSlide}
+                SetAutoplay={SetAutoplay}
+                />
+    }
+    // создаем HOC и через аргумент передаем компонент и данные, на выходе получаем зависимости от компонента переданные в аргументе разную верстку и разную данные
+}
+
+const getDataFromFirstFetch = () => {return 10};
+const getDataFromSecondFetch = () => {return 20};
+    // создаем функцию и передаем данные для вызыва HOC
+
+const SliderFirst = (props) => {
+    return (
+        <>
+            <div className="slider w-50 m-auto">
+                <div className="text-center mt-5">Active slide {props.slide}</div>
+                <div className="buttons mt-3">
+                    <button 
+                        className="btn btn-primary me-2"
+                        onClick={() => props.changeSlide(-1)}>-1</button>
+                    <button 
+                        className="btn btn-primary me-2"
+                        onClick={() => props.changeSlide(1)}>+1</button>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const SliderSecond = (props) => {
+    return (
+        <>
+            <div className="slider w-50 m-auto">
+                <div className="text-center mt-5">Active slide {props.slide} <br/>{props.autoplay ? 'auto' : null} </div>
+                <div className="buttons mt-3">
+                    <button 
+                        className="btn btn-primary me-2"
+                        onClick={() => props.changeSlide(-1)}>-1</button>
+                    <button 
+                        className="btn btn-primary me-2"
+                        onClick={() => props.changeSlide(1)}>+1</button>
+                    <button 
+                        className="btn btn-primary me-2"
+                        onClick={() => props.setAutoplay(autoplay => !props.autoplay)}>toggle autoplay</button>
+                </div>
+            </div>
+        </>
+    )
+}
+    // Пустые компоненты без функционала для передачи в HOC качестве арумента, компоненты стали прости, которое просто рендерит кусочек верстки на основани своих пропсов
+
+const SliderWithFirstFetch = withSlider(SliderFirst, getDatafromFirstFetch)
+const SliderWithSecondFetch = withSlider(SliderSecind, getDatafromSecindFetch)
+    // вызываем HOC
+
+function App() {
+    return (
+        <>
+            <SliderWithFirstFetch/>
+            <SliderWithSecondFetch/>
+        </>
+    );
+}
+
+```
