@@ -168,3 +168,13 @@
                 ** комментарий
                 ** document
                 ** фрагмент document
+
+# 25. Свойства для перемещение по DOM-дереву?
+
+`document` - самый верхный элемент
+`Element` - html
+`head` - head
+`body` - body
+`firstchild` - первый элемент
+`lastchild` - последный элемент
+`childNodes` - отдельный узел между элементами
